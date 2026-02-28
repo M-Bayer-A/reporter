@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "react-datepicker/dist/react-datepicker.css";
+
+html {
+  overflow: hidden;
+  /* This one is important to avoid the propagation */
+}
+
+/* body {
+  overflow: auto;
+  margin: 0;
+
+  min-width: 350px;
+  height: 100vh;
+  width: 100vw;
+} */
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+  cursor: pointer; /* changes cursor to a hand */
+}
+
+.white-svg {
+  filter: brightness(0) invert(1); /* Turns any color to white */
+}
+.black-svg {
+  filter: brightness(0) saturate(100%);
+}
+/* ==FONTS== */
+
+/* Cairo */
+@font-face {
+  font-family: Cairo;
+  src: url("./assets/fonts/Cairo-VariableFont_slnt\,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Geist */
+@font-face {
+  font-family: Geist;
+  src: url("./assets/fonts/Geist-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Tajawal */
+@font-face {
+  font-family: "Tajawal";
+  src: url("./assets/fonts/tajawal/Tajawal-ExtraLight.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("./assets/fonts/tajawal/Tajawal-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("./assets/fonts/tajawal/Tajawal-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("./assets/fonts/tajawal/Tajawal-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("./assets/fonts/tajawal/Tajawal-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("./assets/fonts/tajawal/Tajawal-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("./assets/fonts/tajawal/Tajawal-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Lobster Two */
+@font-face {
+  font-family: LobsterTwo;
+  src: url("./assets/fonts/Lobster_Two/LobsterTwo-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: LobsterTwo;
+  src: url("./assets/fonts/Lobster_Two/LobsterTwo-Italic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: LobsterTwo;
+  src: url("./assets/fonts/Lobster_Two/LobsterTwo-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: LobsterTwo;
+  src: url("./assets/fonts/Lobster_Two/LobsterTwo-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
