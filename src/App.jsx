@@ -1,17 +1,36 @@
-import { Navigate, Route, Routes } from "react-router";
-import LoginPage from "./ui/pages/LoginPage";
+import { Navigate, Route, Routes, useRoutes } from "react-router";
+import StartPage from "./ui/pages/StartPage";
 import FormPage from "./ui/pages/FormPage";
 import ResultPage from "./ui/pages/ResultPage";
 
 function App() {
+  //
+  const routes = useRoutes([
+    {
+      path: "/",
+      element: <Navigate to="/start" />,
+      children: [],
+    },
+    {
+      path: "/start",
+      element: <StartPage />,
+      children: [],
+    },
+    {
+      path: "/form",
+      element: <FormPage />,
+      children: [],
+    },
+    {
+      path: "/result",
+      element: <ResultPage />,
+      children: [],
+    },
+  ]);
+  //
   return (
     <div className="h-screen w-screen content-center place-items-center overflow-auto">
-      <Routes>
-        <Route index element={<Navigate to={"login"} />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="form" element={<FormPage />} />
-        <Route path="result" element={<ResultPage />} />
-      </Routes>
+      {routes}
     </div>
   );
 }
