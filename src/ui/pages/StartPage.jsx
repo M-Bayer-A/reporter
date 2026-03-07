@@ -7,8 +7,8 @@ export default function StartPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-full flex flex-col gap-10 p-10">
-      <div className="flex flex-col justify-center items-center gap-5 font-[LobsterTwo] grow">
+    <div className="min-h-full flex flex-col justify-center gap-25 p-10">
+      <div className="flex flex-col items-center gap-5 font-[LobsterTwo]">
         <h1 className="text-8xl ">Reporter</h1>
         <p>Write your report with easy way</p>
         <CustomButton
