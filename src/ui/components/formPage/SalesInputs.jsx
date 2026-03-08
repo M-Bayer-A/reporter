@@ -12,9 +12,10 @@ export default function SalesInputs() {
   const dispatch = useDispatch();
   const { alAlmin, alRasheed, cash } = useSelector(formSelector.sales);
   //
-  const handleAlAminInput = (value) => dispatch(setSalesAlAmin(value));
-  const handleAlRasheedInput = (value) => dispatch(setSalesAlRasheed(value));
-  const handleCashInput = (value) => dispatch(setSalesCash(value));
+  const handleAlAminInput = (value) => dispatch(setSalesAlAmin({ value }));
+  const handleAlRasheedInput = (value) =>
+    dispatch(setSalesAlRasheed({ value }));
+  const handleCashInput = (value) => dispatch(setSalesCash({ value }));
   //
   return (
     <>

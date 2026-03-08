@@ -11,8 +11,8 @@ export default function NotesInputs() {
   const dispatch = useDispatch();
   const notes = useSelector(formSelector.notes);
   //
-  const handleNoteInput = (value) => dispatch(setNotesText(value));
-  const handleReturnsInput = (value) => dispatch(setNotesReturns(value));
+  const handleNoteInput = (value) => dispatch(setNotesText({ value }));
+  const handleReturnsInput = (value) => dispatch(setNotesReturns({ value }));
   //
   return (
     <>
@@ -25,7 +25,7 @@ export default function NotesInputs() {
         />
       </div>
       <div className="w-full flex flex-col gap-2">
-        <label>الفترة</label>
+        <label>الملاحظات</label>
         <CustomTextArea
           className={"h-25"}
           value={notes.text}

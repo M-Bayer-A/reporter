@@ -10,13 +10,37 @@ export default function ResultPage() {
   const advances = useSelector(formSelector.advances);
   const notes = useSelector(formSelector.notes);
   let sum = 0;
-  expenses.forEach((a) => (sum += numberHelper.parseToNumber(a.value)));
-  advances.forEach((a) => (sum += numberHelper.parseToNumber(a.value)));
+
+  expenses.forEach((a) => (sum += a.value));
+  advances.forEach((a) => (sum += a.value));
+
+  const info = [
+    {
+      label: "مبيعات الأمين:",
+      value: numberHelper.parseToString(sales.alAlmin),
+    },
+    {
+      label: "مبيعات الرشيد:",
+      value: numberHelper.parseToString(sales.alRasheed),
+    },
+    {
+      label: "صافي الصندوق:",
+      value: numberHelper.parseToString(sales.cash),
+    },
+    {
+      label: "مجمل النفقات:",
+      value: numberHelper.parseToString(sum),
+    },
+    {
+      label: "مرتجع المبيعات:",
+      value: numberHelper.parseToString(notes.returns),
+    },
+  ];
   //
   return (
     <div
       dir="rtl"
-      className="w-full md:w-100 flex flex-col gap-5 p-5 font-[Tajawal]"
+      className="w-full md:w-100 flex flex-col gap-5 p-5 font-[Tajawal] list-inside"
     >
       <div className="text-center">
         <h1 className="text-2xl font-bold pb-2">
@@ -26,38 +50,16 @@ export default function ResultPage() {
         <h4>{credentials.date}</h4>
         <h4>{credentials.name}</h4>
       </div>
-      <table className="w-full table-fixed list-inside">
+      <table className="w-full table-fixed">
         <tbody>
-          <tr>
-            <td>
-              <li>مبيعات الأمين:</li>
-            </td>
-            <td>{numberHelper.parseToString(sales.alAlmin)}</td>
-          </tr>
-          <tr>
-            <td>
-              <li>مبيعات الرشيد:</li>
-            </td>
-            <td>{numberHelper.parseToString(sales.alRasheed)}</td>
-          </tr>
-          <tr>
-            <td>
-              <li>صافي الصندوق:</li>
-            </td>
-            <td>{numberHelper.parseToString(sales.cash)}</td>
-          </tr>
-          <tr>
-            <td>
-              <li>مجمل النفقات:</li>
-            </td>
-            <td>{numberHelper.parseToString(sum)}</td>
-          </tr>
-          <tr>
-            <td>
-              <li>مرتجع المبيعات:</li>
-            </td>
-            <td>{numberHelper.parseToString(notes.returns)}</td>
-          </tr>
+          {info.map((i) => (
+            <tr>
+              <td>
+                <li>{i.label}</li>
+              </td>
+              <td>{i.value}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
       {/*  */}
@@ -73,7 +75,7 @@ export default function ResultPage() {
           <tbody>
             {expenses.map((e) => (
               <tr key={e.label}>
-                <td className="p-1">{e.label}</td>
+                <td className="p-1">{e.name}</td>
                 <td className="p-1">{numberHelper.parseToString(e.value)}</td>
               </tr>
             ))}
@@ -97,6 +99,13 @@ export default function ResultPage() {
             ))}
           </tbody>
         </table>
+      </div>
+      {/*  */}
+      <div className="flex flex-col gap-2">
+        <li>الملاحظات:</li>
+        <p className="w-full overflow-hidden text-ellipsis whitespace-pre-line">
+          {notes.text}
+        </p>
       </div>
     </div>
   );

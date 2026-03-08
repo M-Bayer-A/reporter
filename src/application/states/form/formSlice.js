@@ -37,47 +37,61 @@ export const formSlice = createSlice({
     },
     //
     setCredentialsName: (state, { payload }) => {
-      state.credentials.name = payload;
+      const { value } = payload;
+      state.credentials.name = value;
     },
     setCredentialsShift: (state, { payload }) => {
-      state.credentials.shift = payload;
+      const { value } = payload;
+      state.credentials.shift = value;
     },
     setCredentialsDate: (state, { payload }) => {
-      state.credentials.date = payload;
+      const { value } = payload;
+      state.credentials.date = value;
     },
     //
     setSalesAlAmin: (state, { payload }) => {
-      state.sales.alAlmin = payload;
+      const { value } = payload;
+      state.sales.alAlmin = value;
     },
     setSalesAlRasheed: (state, { payload }) => {
-      state.sales.alRasheed = payload;
+      const { value } = payload;
+      state.sales.alRasheed = value;
     },
     setSalesCash: (state, { payload }) => {
-      state.sales.cash = payload;
+      const { value } = payload;
+      state.sales.cash = value;
     },
     addExpense: (state, { payload }) => {
+      const { name, value } = payload;
       state.expenses.push({
-        ...payload,
+        name,
+        value,
         id: nanoid(),
       });
     },
     deleteExpense: (state, { payload }) => {
-      state.expenses = state.expenses.filter((item) => item.id !== payload);
+      const { id } = payload;
+      state.expenses = state.expenses.filter((item) => item.id !== id);
     },
     addAdvance: (state, { payload }) => {
+      const { name, value } = payload;
       state.advances.push({
-        ...payload,
+        name,
+        value,
         id: nanoid(),
       });
     },
     deleteAdvance: (state, { payload }) => {
-      state.advances = state.advances.filter((item) => item.id !== payload);
+      const { id } = payload;
+      state.advances = state.advances.filter((item) => item.id !== id);
     },
     setNotesReturns: (state, { payload }) => {
-      state.notes.returns = payload;
+      const { value } = payload;
+      state.notes.returns = value;
     },
     setNotesText: (state, { payload }) => {
-      state.notes.text = payload;
+      const { value } = payload;
+      state.notes.text = value;
     },
   },
 });

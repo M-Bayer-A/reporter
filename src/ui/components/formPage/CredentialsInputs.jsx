@@ -19,10 +19,11 @@ export default function CredentialsInputs() {
     { value: "evening", label: "مسائي" },
   ];
   //
-  const handleOnChangeName = (value) => dispatch(setCredentialsName(value));
-  const handleOnChangeShift = (value) => dispatch(setCredentialsShift(value));
+  const handleOnChangeName = (value) => dispatch(setCredentialsName({ value }));
+  const handleOnChangeShift = (value) =>
+    dispatch(setCredentialsShift({ value }));
   const handleOnChangeDate = (value) =>
-    dispatch(setCredentialsDate(dateHelper.parseToString(value)));
+    dispatch(setCredentialsDate(dateHelper.parseToString({ value })));
   //
   return (
     <>

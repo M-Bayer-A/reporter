@@ -18,7 +18,7 @@ export default function AdvancesInputs() {
     dispatch(addAdvance(inputs));
     setInputs({ name: "", value: "" });
   };
-  const handleDelete = (id) => dispatch(deleteAdvance(id));
+  const handleDelete = (id) => dispatch(deleteAdvance({ id }));
   //
   const isAddButtonDisable = () => {
     const isNameEmpty = inputs.name == null || inputs.name == "";

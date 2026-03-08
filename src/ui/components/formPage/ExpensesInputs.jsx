@@ -10,18 +10,18 @@ import {
 import numberHelper from "../../../helpers/numberHelper";
 
 export default function ExpensesInputs() {
-  const [inputs, setInputs] = useState({ label: "", value: "" });
+  const [inputs, setInputs] = useState({ name: "", value: "" });
   const dispatch = useDispatch();
   const expenses = useSelector(formSelector.expenses);
   //
   const handleAdd = () => {
     dispatch(addExpense(inputs));
-    setInputs({ label: "", value: "" });
+    setInputs({ name: "", value: "" });
   };
-  const handleDelete = (id) => dispatch(deleteExpense(id));
+  const handleDelete = (id) => dispatch(deleteExpense({ id }));
   //
   const isAddButtonDisable = () => {
-    const isLabelEmpty = inputs.label == null || inputs.label == "";
+    const isLabelEmpty = inputs.name == null || inputs.name == "";
     const isValueEmpty = inputs.value == null || inputs.value == "";
     return isLabelEmpty || isValueEmpty;
   };
@@ -35,7 +35,7 @@ export default function ExpensesInputs() {
           {expenses.map((e) => (
             <div key={e.id} className="w-full flex flex-row items-center gap-2">
               <button onClick={() => handleDelete(e.id)}>❌</button>
-              <label>{e.label}</label>
+              <label>{e.name}</label>
               <p className="grow text-left">
                 {numberHelper.parseToString(e.value)}
               </p>
@@ -48,7 +48,7 @@ export default function ExpensesInputs() {
             className={"w-full"}
             placeholder={"العنوان"}
             value={inputs.label}
-            onChange={(value) => setInputs({ ...inputs, label: value })}
+            onChange={(value) => setInputs({ ...inputs, name: value })}
           />
           <CustomTextInput
             type="number"
