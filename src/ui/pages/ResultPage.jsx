@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { formSelector } from "../../application/states/form/formSelector";
 import numberHelper from "../../helpers/numberHelper";
-import Detail from "../components/resultPage/detail";
 import SingleColTable from "../components/resultPage/SingleColTable";
+import Info from "../components/resultPage/Info";
 
 export default function ResultPage() {
   //
@@ -87,7 +87,7 @@ export default function ResultPage() {
       </div>
       {info.map((i) => (
         <div>
-          <Detail className={"text-xl"} label={i.label} value={i.value} />
+          <Info className={"text-xl"} label={i.label} value={i.value} />
           {!i.Details ? (
             <></>
           ) : (
@@ -95,7 +95,7 @@ export default function ResultPage() {
               <div className="w-0 grow border" />
               <div className=" w-full flex flex-col">
                 {i.Details.map((d) => (
-                  <Detail label={d.label} value={d.value} />
+                  <Info label={d.label} value={d.value} />
                 ))}
               </div>
             </div>
