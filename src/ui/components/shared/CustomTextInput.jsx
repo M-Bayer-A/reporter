@@ -11,7 +11,7 @@ export default function CustomTextInput({
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={`px-3 py-2 border border-zinc-200 rounded-md focus:outline-none focus:border-black
+      className={`h-10 px-3 py-2 border border-zinc-200 rounded-md focus:outline-none focus:border-black
         [&::-webkit-inner-spin-button]:appearance-none ${className}`}
     />
   );

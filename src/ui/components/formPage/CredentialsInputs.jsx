@@ -23,7 +23,7 @@ export default function CredentialsInputs() {
   const handleOnChangeShift = (value) =>
     dispatch(setCredentialsShift({ value }));
   const handleOnChangeDate = (value) =>
-    dispatch(setCredentialsDate(dateHelper.parseToString({ value })));
+    dispatch(setCredentialsDate({ value: dateHelper.parseToString(value) }));
   //
   return (
     <>

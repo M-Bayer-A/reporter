@@ -42,7 +42,7 @@ export default function FormPage() {
   };
   //
   return (
-    <div className="w-full md:w-100 flex flex-col gap-5 p-5">
+    <div className="w-full md:w-100 flex flex-col gap-5 py-10 px-5">
       <div className="w-full flex flex-col items-center gap-2.5 text-2xl font-bold font-[Tajawal]">
         <label>التقدم</label>
         <CustomProgressBar value={step} max={5} className={"w-full"} />

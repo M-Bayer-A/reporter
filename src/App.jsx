@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useRoutes } from "react-router";
+import { Navigate, useRoutes } from "react-router";
 import StartPage from "./ui/pages/StartPage";
 import FormPage from "./ui/pages/FormPage";
 import ResultPage from "./ui/pages/ResultPage";
@@ -9,22 +9,18 @@ function App() {
     {
       path: "/",
       element: <Navigate to="/start" />,
-      children: [],
     },
     {
       path: "/start",
       element: <StartPage />,
-      children: [],
     },
     {
       path: "/form",
       element: <FormPage />,
-      children: [],
     },
     {
       path: "/result",
       element: <ResultPage />,
-      children: [],
     },
   ]);
   //
