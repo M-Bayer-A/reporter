@@ -4,9 +4,16 @@ import numberHelper from "../../helpers/numberHelper";
 import SingleColTable from "../components/resultPage/SingleColTable";
 import Info from "../components/resultPage/Info";
 import { useRef } from "react";
-import { useReactToPrint } from "react-to-print";
+import { toPng } from "html-to-image";
+import CustomButton from "../components/shared/CustomButton";
+import { customIcons, getIcon } from "../../helpers/iconHelper";
+import CustomIconButton from "../components/shared/CustomIconButton";
+import { useNavigate } from "react-router";
 
 export default function ResultPage() {
+  //
+  const ref = useRef();
+  const navigate = useNavigate();
   //
   const credentials = useSelector(formSelector.credentials);
   const sales = useSelector(formSelector.sales);
@@ -73,52 +80,70 @@ export default function ResultPage() {
     },
   ];
   //
-  const ref = useRef();
+  const handleDownload = async () => {
+    const dataUrl = await toPng(ref.current);
 
-  const handlePrint = useReactToPrint({
-    contentRef: ref,
-  });
+    const link = document.createElement("a");
+    link.download = "page.png";
+    link.href = dataUrl;
+    link.click();
+  };
   //
   return (
-    <div
-      ref={ref}
-      dir="rtl"
-      className="w-full md:w-100 flex flex-col gap-5 py-10 px-5 font-[Tajawal] list-inside"
-    >
-      <button onClick={handlePrint}>Print / Save PDF</button>
+    <div className="w-full md:w-120 flex flex-col py-10">
+      <div className="w-full flex flex-row justify-around items-center px-5">
+        <CustomIconButton
+          className={"h-10"}
+          icon={getIcon(customIcons.download)}
+          onClick={handleDownload}
+        />
+        <img className="h-15" src={getIcon(customIcons.cashlogLogo)} />
 
-      <hr />
-      <div className="text-center">
-        <h1 className="text-2xl font-bold pb-2">
-          التقرير {credentials.shift == "evening" ? " المسائي " : " الصباحي "}
-          للمبيعات
-        </h1>
-        <h4>{credentials.date}</h4>
-        <h4>باير</h4>
+        <CustomIconButton
+          className={"h-10"}
+          icon={getIcon(customIcons.edit)}
+          onClick={() => navigate("/form")}
+        />
       </div>
-      {info.map((i) => (
-        <div>
-          <Info className={"text-xl"} label={i.label} value={i.value} />
-          {!i.Details ? (
-            <></>
-          ) : (
-            <div className="w-full flex flex-row p-0.5 gap-4">
-              <div className="w-0 grow border" />
-              <div className=" w-full flex flex-col">
-                {i.Details.map((d) => (
-                  <Info label={d.label} value={d.value} />
-                ))}
-              </div>
-            </div>
-          )}
+
+      <div
+        ref={ref}
+        dir="rtl"
+        className="w-full flex flex-col px-5 gap-5 bg-white font-[Tajawal] list-inside"
+      >
+        <hr />
+        <div className="text-center">
+          <h1 className="text-2xl font-bold pb-2">
+            التقرير {credentials.shift == "evening" ? " المسائي " : " الصباحي "}
+            للمبيعات
+          </h1>
+          <h4>{credentials.date}</h4>
+          <h4>{credentials.name}</h4>
         </div>
-      ))}
-      <div className="w-full flex flex-row border-2 rounded-2xl">
-        <SingleColTable label={"مصاريف"} details={expenses} />
-        <div className="w-0 grow border" />
-        <SingleColTable label={"سِلف"} details={advances} />
+        {info.map((i) => (
+          <div>
+            <Info className={"text-xl"} label={i.label} value={i.value} />
+            {!i.Details ? (
+              <></>
+            ) : (
+              <div className="w-full flex flex-row p-0.5 gap-4">
+                <div className="w-0 grow border" />
+                <div className=" w-full flex flex-col">
+                  {i.Details.map((d) => (
+                    <Info label={d.label} value={d.value} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+        <div className="w-full flex flex-row border-2 rounded-2xl">
+          <SingleColTable label={"مصاريف"} details={expenses} />
+          <div className="w-0 grow border" />
+          <SingleColTable label={"سِلف"} details={advances} />
+        </div>
+        <hr />
       </div>
-      <hr />
     </div>
   );
 }
